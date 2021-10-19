@@ -19,7 +19,9 @@ function App() {
         {/* Header section  */}
         <Header></Header>
         <Switch>
-
+          <Route exact path="/">
+            <Home></Home>
+          </Route>
           <Route exact path="/home">
             <Home></Home>
           </Route>
@@ -33,9 +35,7 @@ function App() {
           <Route exact path="/contact">
             <Contact></Contact>
           </Route>
-          <Route exact path="/">
-            <Home></Home>
-          </Route>
+
           <Route path="*">
             <PageNotFound></PageNotFound>
           </Route>

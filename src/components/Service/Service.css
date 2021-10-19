@@ -1,0 +1,9 @@
+.service {
+  border-radius: 10px;
+  box-shadow: 4px 4px 5px gray;
+  background-color: rgb(217, 254, 255);
+}
+.service img {
+  width: 80%;
+  margin: 0 auto;
+}
