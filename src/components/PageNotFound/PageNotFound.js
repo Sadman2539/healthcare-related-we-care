@@ -1,10 +1,15 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
+import notFound from '../../images/404.png'
 const PageNotFound = () => {
     return (
         <div>
-            <img src="../../images/pageNotFound.png" alt="" />
+            <img className='w-100 ' src={notFound} alt="" />
+            <Link to='/home'>
+                <button >Go to Home</button>
+            </Link>
         </div>
+
     );
 };
 
