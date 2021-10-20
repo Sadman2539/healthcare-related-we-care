@@ -13,13 +13,21 @@ const Contact = () => {
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
 
+                    <Form.Control type="number" placeholder="Phone Number" />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+
                     <Form.Control type="email" placeholder="youremail@example.com" />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+
+                    <Form.Control type="text" placeholder="What care do you need" />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
 
                     <Form.Control as="textarea" rows={3} />
                 </Form.Group>
-                <button>Submit</button>
+                <button className="regular-btn">Submit</button>
             </Form >
         </div >
     );

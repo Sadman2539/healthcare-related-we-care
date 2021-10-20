@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import Service from '../Service/Service';
 
 import './Home.css'
@@ -15,7 +15,13 @@ const Home = () => {
     return (
         <>
             <div className="welcome-section" id="home">
-
+                <div className="welcome-content">
+                    <h1 >Best Elder Care In Town</h1>
+                    <button className="regular-btn">
+                        Learn More
+                        <span><i class="fas fa-arrow-right ms-2" ></i></span>
+                    </button>
+                </div>
             </div>
 
             {/* our services section  */}
@@ -29,9 +35,11 @@ const Home = () => {
 
 
                     </Row>
-                    <Link>
-                        <button>More Services</button>
-                    </Link>
+                    <NavLink to="/services">
+                        <button className="regular-btn m-3 mx-auto">More Services
+                            <span><i class="fas fa-arrow-right ms-2"></i></span>
+                        </button>
+                    </NavLink>
 
                 </div>
             </div>

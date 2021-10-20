@@ -2,21 +2,24 @@ import Button from '@restart/ui/esm/Button';
 import React from 'react';
 import { Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import useFirebase from '../../Hooks/useFirebase';
 import initializeAuthentication from '../Firebase/firebase.init';
 import { useEffect, useState } from "react";
-
+import useAuth from '../../Hooks/useAuth';
+import { getAuth } from '@firebase/auth';
+import './Login.css'
 initializeAuthentication();
 const Login = () => {
-
+    const auth = getAuth();
     const [email, setEmail] = useState('');
+    const [error, setError] = useState('');
     const [password, setPassword] = useState('');
-    const { signInUsingGoogle, signInUsingGithub } = useFirebase();
+    const { signInUsingGoogle, signInUsingGithub, loginWIthEmailPassword } = useAuth();
 
 
     // handleLogin function call 
     const handleLogin = (event) => {
         event.preventDefault();
+        loginWIthEmailPassword(email, password);
     }
     // handleEmailChange function call 
     const handleEmailChange = e => {
@@ -27,7 +30,8 @@ const Login = () => {
         setPassword(e.target.value);
     }
     return (
-        <div className="container w-50 ">
+        <div className="container w-50 login-section">
+            <h1 className="text-center">Please Login</h1>
             <Form onSubmit={handleLogin}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
@@ -42,19 +46,19 @@ const Login = () => {
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">
                     <Form.Check type="checkbox" label="Save Password" />
                 </Form.Group>
-                <Button variant="primary" type="submit">
+                <Button variant="primary" type="submit" className="regular-btn ">
                     Login
                 </Button>
-                <br />
-                <Button onClick={signInUsingGoogle} >
-                    Google Sign In
+                <hr />
+                <Button onClick={signInUsingGoogle} className="regular-btn me-4 mt-2">
+                    Google SignIn
+                </Button>
+
+                <Button onClick={signInUsingGithub} className="regular-btn mt-2">
+                    GitHub SignIn
                 </Button>
                 <br />
-                <Button onClick={signInUsingGithub} >
-                    GitHub Sign In
-                </Button>
-                <br />
-                <Link to="/signup">
+                <Link to="/signup" >
                     Need a account?
                 </Link>
             </Form>

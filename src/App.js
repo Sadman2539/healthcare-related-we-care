@@ -15,45 +15,54 @@ import Header from './components/Header/Header';
 import ServiceDetails from './components/ServiceDetails/ServiceDetails';
 import Login from './components/Login/Login';
 import SignUp from './components/SignUp/SignUp';
+import AuthProvider from './contexts/AuthProvider';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
     <div className="App">
-      <Router>
-        {/* Header section  */}
-        <Header></Header>
-        <Switch>
-          <Route exact path="/">
-            <Home></Home>
-          </Route>
-          <Route exact path="/home">
-            <Home></Home>
-          </Route>
-          <Route exact path="/login">
-            <Login></Login>
-          </Route>
-          <Route exact path="/signup">
-            <SignUp></SignUp>
-          </Route>
+      <AuthProvider>
+        <Router>
+          {/* Header section  */}
+          <Header></Header>
 
-          <Route exact path="/about">
-            <About></About>
-          </Route>
-          <Route exact path="/services">
-            <Services></Services>
-          </Route>
-          <Route exact path="/contact">
-            <Contact></Contact>
-          </Route>
-          <Route exact path="/service-details/:serviceId">
-            <ServiceDetails></ServiceDetails>
-          </Route>
+          <Switch>
+            <Route exact path="/">
+              <Home></Home>
+            </Route>
+            <Route exact path="/home">
+              <Home></Home>
+            </Route>
+            <Route exact path="/login">
+              <Login></Login>
+            </Route>
+            <Route exact path="/signup">
+              <SignUp></SignUp>
+            </Route>
 
-          <Route path="*">
-            <PageNotFound></PageNotFound>
-          </Route>
-        </Switch>
-      </Router>
+            <Route exact path="/about">
+              <About></About>
+            </Route>
+            <Route exact path="/services">
+              <Services></Services>
+            </Route>
+            <Route exact path="/contact">
+              <Contact></Contact>
+            </Route>
+            <PrivateRoute exact path="/service-details/:serviceId">
+              <ServiceDetails></ServiceDetails>
+            </PrivateRoute>
+
+            <Route path="*">
+              <PageNotFound></PageNotFound>
+            </Route>
+          </Switch>
+
+          {/* footer section  */}
+          <Footer></Footer>
+        </Router>
+      </AuthProvider>
     </div>
   );
 }

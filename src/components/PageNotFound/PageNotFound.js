@@ -6,7 +6,7 @@ const PageNotFound = () => {
         <div>
             <img className='w-100 ' src={notFound} alt="" />
             <Link to='/home'>
-                <button >Go to Home</button>
+                <button className="regular-btn">Go to Home</button>
             </Link>
         </div>
 
